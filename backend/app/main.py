@@ -3,12 +3,13 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from sqlalchemy import text
 
+from app.api.project_routes import router as project_router
 from app.core.config import settings
 from app.database.base import Base
 from app.database.connection import engine
 
 # Import all models here
-from app.models.project import Project
+from app.models import project
 
 
 @asynccontextmanager
@@ -29,6 +30,8 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+# Register API Routers
+app.include_router(project_router)
 
 @app.get("/")
 def root():
