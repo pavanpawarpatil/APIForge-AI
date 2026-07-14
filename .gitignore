@@ -1,25 +1,8 @@
-# Python
+venv/
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-
-# Virtual Environment
-venv/
-.venv/
-
-# Environment Variables
 .env
-
-# VS Code
+generated_projects/
+*.zip
+.idea/
 .vscode/
-
-# Pytest
-.pytest_cache/
-
-# Logs
-*.log
-
-# OS Files
-.DS_Store
-Thumbs.db

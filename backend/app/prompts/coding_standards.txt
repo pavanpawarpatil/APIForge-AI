@@ -1,0 +1,13 @@
+Use FastAPI lifespan.
+
+Use SQLAlchemy 2.x.
+
+Use Pydantic v2.
+
+Use absolute imports.
+
+Do not use deprecated APIs.
+
+Generate production-ready code.
+
+Return only code.

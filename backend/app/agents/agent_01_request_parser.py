@@ -1,21 +1,35 @@
-from app.services.llm_service import llm
+from app.schemas.request_parser import RequestParserResponse
+from app.services.ai_service import ai_service
 from app.utils.prompt_loader import load_prompt
+
 
 class RequestParserAgent:
     """
-    Parser the user's request into a structured format.
+    Agent responsible for converting
+    a natural language request into
+    a structured project definition.
     """
-    def parse(self, user_request: str):
-        system_prompt = load_prompt("system_prompt.txt")
-        
-        parser_prompt = """
-        {system_prompt}
-        Convert the following user request into structured JSON.
-        
-        User Request:
-        {user_request}
-        
-        Return only valid JSON 
-        """
-        response = llm.invoke(parser_prompt)
-        return response.content
+
+    def __init__(self):
+        self.prompt_template = load_prompt(
+            "01_request_parser.txt"
+        )
+
+    def run(
+        self,
+        user_request: str,
+    ) -> RequestParserResponse:
+
+        prompt = (
+            f"{self.prompt_template}\n\n"
+            f"User Request:\n"
+            f"{user_request}"
+        )
+
+        return ai_service.generate_structured(
+            prompt=prompt,
+            schema=RequestParserResponse,
+        )
+
+
+request_parser_agent = RequestParserAgent()
