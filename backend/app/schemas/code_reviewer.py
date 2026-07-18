@@ -11,4 +11,4 @@ class ReviewedCode(BaseModel):
 
     filepath: str
 
-    reviewed_source_code: str
+    source_code: str

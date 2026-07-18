@@ -60,7 +60,7 @@ SOURCE CODE
         return ReviewedCode(
             filename=generated_code.filename,
             filepath=generated_code.filepath,
-            reviewed_source_code=corrected_source,
+            source_code=corrected_source,
         )
 
 
